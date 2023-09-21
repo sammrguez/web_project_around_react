@@ -19,7 +19,7 @@ function App() {
     api.getUserInfo().then((res) => {
       setCurrentUser(res);
     });
-  }, [currentUser]);
+  }, []);
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
@@ -53,7 +53,9 @@ function App() {
     api.setUserAvatar(url);
   }
   function handleUpdateUser(profile) {
-    api.setUserInfo(profile).then((res) => {});
+    api.setUserInfo(profile).then((res) => {
+      setCurrentUser(res);
+    });
   }
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
