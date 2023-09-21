@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 
 import PopupConfirmation from "./PopupConfirmation";
 import Profile from "./Profile";
-import CardContainer from "./CardContainer";
+
 import ImagePopup from "./ImagePopup";
+import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function Main({
@@ -31,13 +32,19 @@ function Main({
         userDescrprion={currentUser.about}
         onAddPlaceClick={onAddPlaceClick}
       />
-
-      <CardContainer
-        onCardLike={onCardLike}
-        cards={cards}
-        onCardClick={onCardClick}
-        onCardDelete={onCardDelete}
-      />
+      <section className="card-container">
+        {cards.map((card) => {
+          return (
+            <Card
+              key={card._id}
+              card={card}
+              onCardClick={onCardClick}
+              onCardLike={onCardLike}
+              onCardDelete={onCardDelete}
+            />
+          );
+        })}
+      </section>
 
       <ImagePopup name="photo" onClose={onClose} selectedCard={selectedCard} />
       <PopupConfirmation />
