@@ -15,12 +15,12 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
+  const [cards, setCards] = useState([]);
   useEffect(() => {
     api.getUserInfo().then((res) => {
       setCurrentUser(res);
     });
   }, []);
-  const [cards, setCards] = useState([]);
 
   useEffect(() => {
     api

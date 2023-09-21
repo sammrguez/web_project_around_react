@@ -23,23 +23,21 @@ function Profile({
       />
 
       <div className="profile__info">
-        <div className="edit-button">
+        <div className="edit-button" onClick={onEditProfileClick}>
           <img
             className="edit-button__icon"
             src={editIcon}
             alt="ícono de editar"
-            onClick={onEditProfileClick}
           />
         </div>
         <h1 className="profile__user-name">{userName}</h1>
         <h2 className="profile__user-profession">{userDescrprion} </h2>
       </div>
-      <div className="add-button">
+      <div className="add-button" onClick={onAddPlaceClick}>
         <img
           className="add-button__icon"
           src={addIcon}
           alt="ícono de agregar"
-          onClick={onAddPlaceClick}
         />
       </div>
     </section>
