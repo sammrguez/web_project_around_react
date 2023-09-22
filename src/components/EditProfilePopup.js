@@ -5,13 +5,13 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   const currentUser = useContext(CurrentUserContext);
 
-  const [name, setName] = useState(" ");
-  const [description, setDescription] = useState(" ");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
 
   useEffect(() => {
-    if (currentUser.name !== name || currentUser.about !== description) {
-      setName(currentUser.name);
-      setDescription(currentUser.about);
+    if (currentUser.name !== undefined || currentUser.about !== undefined) {
+      setName(currentUser.name || "");
+      setDescription(currentUser.about || "");
     }
   }, [currentUser]);
 
@@ -52,7 +52,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
         minLength="2"
         maxLength="30"
         onChange={handleName}
-        value={name || " "}
+        value={name}
       />
 
       <span className="form__input-error name-input-error"></span>
@@ -67,7 +67,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
         minLength="2"
         maxLength="20"
         onChange={handleDescription}
-        value={description || " "}
+        value={description}
       />
 
       <span className="form__input-error about-me-input-error"></span>
